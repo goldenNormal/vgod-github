@@ -1,6 +1,3 @@
-# -*- ecoding: utf-8 -*-
-# @Author: HuangYiHong
-# @Time: 2022-09-11 16:04
 import scipy.io as sio
 import numpy as np
 import torch

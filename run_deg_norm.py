@@ -1,4 +1,4 @@
-from  my_model import NeiVar,Recon,CooTrain
+from  my_model import NeiVar,Recon
 from torch.optim import Adam
 import torch
 import torch_geometric.utils as utils
@@ -11,7 +11,7 @@ import argparse
 from load_data import load_mat, load_weibo
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--data', type=str, default='weibo')
+parser.add_argument('--data', type=str, default='Cora')
 args = parser.parse_args()
 
 

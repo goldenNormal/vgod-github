@@ -12,7 +12,7 @@ import numpy as np
 from torch_geometric.transforms import NormalizeFeatures
 parser = argparse.ArgumentParser()
 
-parser.add_argument('--data', type=str, default='Flickr') # 'Cora' 'Citeseer' 'PubMed' 'Flickr'
+parser.add_argument('--data', type=str, default='Cora') # 'Cora' 'Citeseer' 'PubMed' 'Flickr'
 args = parser.parse_args()
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -95,7 +95,7 @@ import matplotlib.pyplot as plt
 with torch.no_grad():
     model.eval()
     score = model(data.x,edge_index).cpu().detach().numpy()
-    np.save(f'{args.data}_str.npy',score)
+    np.save(f'./results/{args.data}_str.npy',score)
 
 # plt.subplot(1,2,1)
 # plt.plot(Entro)

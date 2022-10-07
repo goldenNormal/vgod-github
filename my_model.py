@@ -2,10 +2,7 @@ import torch
 from torch import Tensor, nn
 from torch_geometric.nn import GIN, MessagePassing, GAT, GATConv, GINConv,GCN,MLP
 from torch_geometric.typing import OptTensor, OptPairTensor
-import torch_geometric.utils as utils
-from torch_scatter.scatter import scatter_mean
-from torch_scatter.scatter import scatter_sum
-import torch.nn.functional as F
+
 
 
 class MeanConv(MessagePassing):
@@ -80,42 +77,14 @@ class Recon(nn.Module):
         super(Recon, self).__init__()
         # self.lin = MLP([input_dim,emb_dim,emb_dim],act='relu',dropout=0.2)
         self.lin = nn.Linear(input_dim,emb_dim)
-        self.gnn = GNN(emb_dim,emb_dim,2)
-        self.lin2 = nn.Linear(emb_dim,input_dim)
+        self.gnn = GNN(emb_dim,emb_dim,2,input_dim)
+        # self.lin2 = nn.Linear(emb_dim,input_dim)
 
     def forward(self,x,edge_index):
         h = self.lin(x)
         h = h/(torch.norm(h,dim=-1).reshape(-1,1))
         recon_x = self.gnn(h,edge_index)
-        recon_x = self.lin2(recon_x)
+        # recon_x = self.lin2(recon_x)
         return torch.sum(torch.square(x - recon_x),dim=-1)
 
 
-class CooTrain(nn.Module):
-    def __init__(self,input_dim,emb_dim):
-        super(CooTrain, self).__init__()
-        self.lin = MLP([input_dim,emb_dim,emb_dim],act='relu')
-        self.gnn = GAT(emb_dim,emb_dim,2,input_dim)
-        self.mean = MeanConv()
-        self.cov = CovConv()
-
-    def forward(self,x,edge_index,mode='pos'):
-        h = self.lin(x)
-        h = h/(torch.norm(h,dim=-1).reshape(-1,1))
-
-        mean = self.mean(h,edge_index)
-        var = self.cov(h,edge_index,mean)
-        if mode == 'neg':
-            return var
-
-        recon_x = self.gnn(h,edge_index)
-
-        return torch.sum(torch.square(x - recon_x),dim=-1), var
-
-class structRecon(nn.Module):
-    def __init__(self,input_dim,emb_dim):
-        self.gnn = GCN(input_dim,emb_dim,2,act='relu')
-
-    def forward(self,x,edge_index,adj):
-        h = self.gnn(x,edge_index)
-        return torch.sum(torch.square(torch.mm(h,h.T) - adj),dim=-1)

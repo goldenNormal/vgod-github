@@ -1,4 +1,4 @@
-from  my_model import NeiVar,Recon,CooTrain
+from  my_model import NeiVar,Recon
 from torch.optim import Adam
 import torch
 import torch_geometric.utils as utils
@@ -50,7 +50,7 @@ data = data.to(device)
 print(f'finish load {args.data}')
 # y = (data.y==1).cpu().numpy()   # binary labels (inl
 edge_index = data.edge_index
-# edge_index = utils.add_self_loops(edge_index)[0]
+edge_index = utils.add_self_loops(edge_index)[0]
 
 input_dim = data.x.size(1)
 emb_dim = 128
