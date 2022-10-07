@@ -2,7 +2,7 @@
 
 This is the source code of  paper ”Are we really making much progress in unsupervised graph outlier detection? Revisiting the problem with new insight and method“
 
-![VGOD-framework](C:\Users\Administrator\Desktop\vgod-github\fig\VGOD-framework.png)
+![VGOD-framework](.\fig\VGOD-framework.png)
 
 
 
