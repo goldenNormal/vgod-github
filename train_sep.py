@@ -15,7 +15,7 @@ import os
 os.environ['PYTORCH_CUDA_ALLOC_CONF']="max_split_size_mb:1000"
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--data', type=str, default='weibo')
+parser.add_argument('--data', type=str, default='pubmed')
 # parser.add_argument('--y', type=int, default=1)
 parser.add_argument('--epoch', type=int, default=100)
 parser.add_argument('--str-epoch', type=int, default=10)

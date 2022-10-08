@@ -4,7 +4,6 @@ from torch_geometric.nn import GIN, MessagePassing, GAT, GATConv, GINConv,GCN,ML
 from torch_geometric.typing import OptTensor, OptPairTensor
 
 
-
 class MeanConv(MessagePassing):
 
     def __init__(
@@ -77,14 +76,14 @@ class Recon(nn.Module):
         super(Recon, self).__init__()
         # self.lin = MLP([input_dim,emb_dim,emb_dim],act='relu',dropout=0.2)
         self.lin = nn.Linear(input_dim,emb_dim)
-        self.gnn = GNN(emb_dim,emb_dim,2,input_dim)
-        # self.lin2 = nn.Linear(emb_dim,input_dim)
+        self.gnn = GNN(emb_dim,emb_dim,2)
+        self.lin2 = nn.Linear(emb_dim,input_dim)
 
     def forward(self,x,edge_index):
         h = self.lin(x)
         h = h/(torch.norm(h,dim=-1).reshape(-1,1))
         recon_x = self.gnn(h,edge_index)
-        # recon_x = self.lin2(recon_x)
+        recon_x = self.lin2(recon_x)
         return torch.sum(torch.square(x - recon_x),dim=-1)
 
 

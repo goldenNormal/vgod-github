@@ -12,7 +12,7 @@ import numpy as np
 from torch_geometric.transforms import NormalizeFeatures
 parser = argparse.ArgumentParser()
 
-parser.add_argument('--data', type=str, default='Cora') # 'Cora' 'Citeseer' 'PubMed' 'Flickr'
+parser.add_argument('--data', type=str, default='PubMed') # 'Cora' 'Citeseer' 'PubMed' 'Flickr'
 args = parser.parse_args()
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -27,7 +27,9 @@ data = data.to(device)
 
 print(f'finish load {args.data}')
 y = data.y.cpu().numpy()   # binary labels (inl
+
 edge_index = data.edge_index
+# edge_index,_ = utils.add_self_loops(edge_index)
 
 input_dim = data.x.size(1)
 emb_dim = 128
