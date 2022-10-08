@@ -50,7 +50,9 @@ data = data.to(device)
 print(f'finish load {args.data}')
 # y = (data.y==1).cpu().numpy()   # binary labels (inl
 edge_index = data.edge_index
-edge_index = utils.add_self_loops(edge_index)[0]
+
+if args.data != 'Flickr':
+    edge_index = utils.add_self_loops(edge_index)[0]
 
 input_dim = data.x.size(1)
 emb_dim = 128
