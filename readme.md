@@ -23,17 +23,17 @@ This code requires the following:
 
 #### step 1: outlier injection
 
- This is a pre-processing step which injects anomalies into the original clean datasets. Take Cora dataset as an example: 
+ This is a pre-processing step which injects outliers into the original clean datasets. Take Cora dataset as an example: 
 
 ```
 python inject_anomaly.py --dataset cora
 ```
 
- After anomaly injection, the disturbed datasets are saved into "data" folder 
+ After outlier injection, the disturbed datasets are saved into "data" folder 
 
 #### step 2: outlier detection
 
- This step is to run the **VGOD** framework to detect anomalies in the network datasets. Take Cora dataset as an example: 
+ This step is to run the **VGOD** framework to detect outliers in the network datasets. Take Cora dataset as an example: 
 
 ```
 python train_sep.py --data cora
@@ -45,7 +45,7 @@ python train_sep.py --data cora
 
 #### step 1: outlier injection
 
- This is a pre-processing step which injects anomalies into the original clean datasets. 
+ This is a pre-processing step which injects outliers into the original clean datasets. 
 
 ```
 python struct_ano_detect.py
@@ -55,23 +55,12 @@ python struct_ano_detect.py
 
 #### step 2: outlier detection
 
- This step is to run the **VBM** to detect anomalies in the network datasets. 
+ This step is to run the **VBM** to detect outliers in the network datasets. 
 
 ```
 python struct_ano_detect.py --data Cora
 ```
 
-```
-python struct_ano_detect.py --data Citeseer
-```
-
-```
-python struct_ano_detect.py --data PubMed
-```
-
-```
-python struct_ano_detect.py --data Flickr
-```
 
 
 
