@@ -19,7 +19,7 @@ This code requires the following:
 
 ## Running the experiments
 
-### OD experiment
+### UNOD experiment
 
 #### step 1: outlier injection
 
