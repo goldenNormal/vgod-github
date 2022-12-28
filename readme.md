@@ -1,6 +1,8 @@
 # Are we really making much progress in unsupervised graph outlier detection? Revisiting the problem with new insight and method
 
-This is the source code of  paper ”Are we really making much progress in unsupervised graph outlier detection? Revisiting the problem with new insight and method“
+This is the source code of  paper ”Unsupervised Graph Outlier Detection: Problem Revisit, New Insight, and Superior Method“
+
+The previous title of paper is "Are we really making much progress in unsupervised graph outlier detection? Revisiting the problem with new insight and method".
 
 ![VGOD-framework](./fig/VGOD-framework.png)
 
@@ -21,7 +23,7 @@ This code requires the following:
 
 ### OD experiment
 
-#### step 1: outlier injection
+#### step 1: inject outlier
 
  This is a pre-processing step which injects anomalies into the original clean datasets. Take Cora dataset as an example: 
 
@@ -41,14 +43,14 @@ python train_sep.py --data cora
 
 
 
-### Robustness of structural outlier detection experiment
+### Structural outlier detection experiment with different injection parameters
 
-#### step 1: outlier injection
+#### step 1: inject outlier
 
  This is a pre-processing step which injects anomalies into the original clean datasets. 
 
 ```
-python struct_ano_detect.py
+python inject_struct_anomaly_groups.py
 ```
 
  After anomaly injection, the disturbed datasets are saved into "struct_datasets" folder 
@@ -58,22 +60,37 @@ python struct_ano_detect.py
  This step is to run the **VBM** to detect anomalies in the network datasets. 
 
 ```
-python struct_ano_detect.py --data Cora
+python struct_ano_detect_groups.py --data Cora
 ```
 
 ```
-python struct_ano_detect.py --data Citeseer
+python struct_ano_detect_groups.py --data Citeseer
 ```
 
 ```
-python struct_ano_detect.py --data PubMed
+python struct_ano_detect_groups.py --data PubMed
 ```
 
 ```
-python struct_ano_detect.py --data Flickr
+python struct_ano_detect_groups.py --data Flickr
 ```
 
+### Structural outlier detection experiment with a new injection approach
 
+#### step 1: inject outliers
 
+This is a pre-processing step which injects anomalies into the original clean datasets.
 
+```
+python inject_strcut_anomaly_new_approach.py
+```
 
+After outlier injection, the disturbed datasets are saved into "NovelStr_datasets" folder
+
+#### step 2: outlier detection
+
+This step is to run the **VBM** to detect outliers in the network datasets.
+
+```
+python struct_ano_detect_new_approach.py
+```
