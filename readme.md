@@ -1,4 +1,4 @@
-# Are we really making much progress in unsupervised graph outlier detection? Revisiting the problem with new insight and method
+# Unsupervised Graph Outlier Detection: Problem Revisit, New Insight, and Superior Method
 
 This is the source code of  paper ”Unsupervised Graph Outlier Detection: Problem Revisit, New Insight, and Superior Method“
 
@@ -21,21 +21,21 @@ This code requires the following:
 
 ## Running the experiments
 
-### OD experiment
+### UNOD experiment
 
 #### step 1: inject outlier
 
- This is a pre-processing step which injects anomalies into the original clean datasets. Take Cora dataset as an example: 
+ This is a pre-processing step which injects outliers into the original clean datasets. Take Cora dataset as an example: 
 
 ```
 python inject_anomaly.py --dataset cora
 ```
 
- After anomaly injection, the disturbed datasets are saved into "data" folder 
+ After outlier injection, the disturbed datasets are saved into "data" folder 
 
 #### step 2: outlier detection
 
- This step is to run the **VGOD** framework to detect anomalies in the network datasets. Take Cora dataset as an example: 
+ This step is to run the **VGOD** framework to detect outliers in the network datasets. Take Cora dataset as an example: 
 
 ```
 python train_sep.py --data cora
@@ -45,19 +45,19 @@ python train_sep.py --data cora
 
 ### Structural outlier detection experiment with different injection parameters
 
-#### step 1: inject outlier
+#### step 1: inject outliers
 
- This is a pre-processing step which injects anomalies into the original clean datasets. 
+ This is a pre-processing step which injects outliers into the original clean datasets. 
 
 ```
 python inject_struct_anomaly_groups.py
 ```
 
- After anomaly injection, the disturbed datasets are saved into "struct_datasets" folder 
+ After outlier injection, the disturbed datasets are saved into "struct_datasets" folder 
 
 #### step 2: outlier detection
 
- This step is to run the **VBM** to detect anomalies in the network datasets. 
+ This step is to run the **VBM** to detect outliers in the network datasets. 
 
 ```
 python struct_ano_detect_groups.py --data Cora
@@ -79,7 +79,7 @@ python struct_ano_detect_groups.py --data Flickr
 
 #### step 1: inject outliers
 
-This is a pre-processing step which injects anomalies into the original clean datasets.
+This is a pre-processing step which injects outliers into the original clean datasets.
 
 ```
 python inject_strcut_anomaly_new_approach.py
