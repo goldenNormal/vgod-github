@@ -43,7 +43,7 @@ python train_sep.py --data cora
 
 
 
-### Structural outlier detection experiment with different injection parameters
+### Structural outlier detection experiment under different injection parameters
 
 #### step 1: inject outliers
 
@@ -75,7 +75,9 @@ python struct_ano_detect_groups.py --data PubMed
 python struct_ano_detect_groups.py --data Flickr
 ```
 
-### Structural outlier detection experiment with a new injection approach
+### Structural outlier detection experiment under a new injection approach
+
+Since the current injection approach will cause a serious data leakage issue as mentioned in our paper, we devise a new structural outlier injection approach to avoid the data leakage issue. More details can be found in our paper.
 
 #### step 1: inject outliers
 

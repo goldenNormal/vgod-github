@@ -99,8 +99,8 @@ def eval_model():
     y = y.reshape(score_recon.shape)
     score = add_two_score_std(score_recon,score_var)
 
-    return roc_auc_score(y,score),roc_auc_score(attr_y,score), \
-           roc_auc_score(str_y,score)
+    return roc_auc_score(y,score),roc_auc_score(str_y,score), \
+           roc_auc_score(attr_y,score)
 
 def loss_recon_fn(recon_loss):
     return torch.mean(recon_loss)
