@@ -19,7 +19,7 @@ This code requires the following:
 - Numpy>=1.19.2
 - Scipy>=1.6.2
 - Scikit-learn>=0.24.1
--  PyG  >= 2.1.0
+-  PyG  >= 2.1.0  &&  PyG <= 2.4.0
 
 ## Running the experiments
 
