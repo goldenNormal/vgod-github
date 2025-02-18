@@ -98,3 +98,18 @@ This step is to run the **VBM** to detect outliers in the network datasets.
 ```
 python struct_ano_detect_new_approach.py
 ```
+
+# Citation
+If you find our work useful, please consider citing our paper below. Thank you!
+```
+@INPROCEEDINGS{vgod,
+  author={Huang, Yihong and Wang, Liping and Zhang, Fan and Lin, Xuemin},
+  booktitle={2023 IEEE 39th International Conference on Data Engineering (ICDE)}, 
+  title={Unsupervised Graph Outlier Detection: Problem Revisit, New Insight, and Superior Method}, 
+  year={2023},
+  volume={},
+  number={},
+  pages={2565-2578},
+  keywords={Representation learning;Data engineering;Data models;Anomaly detection;Graph Outlier Detection;Graph Neural Network;Unsupervised Graph learning;Attributed Networks},
+  doi={10.1109/ICDE55515.2023.00197}}
+```
