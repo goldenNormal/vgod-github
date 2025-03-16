@@ -2,6 +2,8 @@
 
 This is the source code of  paper ”Unsupervised Graph Outlier Detection: Problem Revisit, New Insight, and Superior Method“ (https://arxiv.org/abs/2210.12941)
 
+⭐ If you find this repository helpful, please consider giving it a star! ⭐
+
 This paper has been accepted by ICDE 2023.
 
 The previous title of paper is "Are we really making much progress in unsupervised graph outlier detection? Revisiting the problem with new insight and method".
